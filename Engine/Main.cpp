@@ -30,9 +30,12 @@ int WINAPI wWinMain( HINSTANCE hInst,HINSTANCE,LPWSTR pArgs,INT )
 		try
 		{
 			Game theGame( wnd );
-			while( wnd.ProcessMessage() )
+			while( wnd.ProcessMessage() &&theGame.finishgame==false)
 			{
 				theGame.Go();
+				if (theGame.finishgame == true) {
+					system("pause");
+				}
 			}
 		}
 		catch( const ChiliException& e )

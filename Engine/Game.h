@@ -1,5 +1,5 @@
-/****************************************************************************************** 
- *	Chili DirectX Framework Version 16.07.20											  *	
+/******************************************************************************************
+ *	Chili DirectX Framework Version 16.07.20											  *
  *	Game.h																				  *
  *	Copyright 2016 PlanetChili.net <http://www.planetchili.net>							  *
  *																						  *
@@ -23,13 +23,16 @@
 #include "Keyboard.h"
 #include "Mouse.h"
 #include "Graphics.h"
-
+#include "Snake.h"
+#include "Board.h"
+#include <random>
 class Game
 {
 public:
-	Game( class MainWindow& wnd );
-	Game( const Game& ) = delete;
-	Game& operator=( const Game& ) = delete;
+	bool finishgame = false;
+	Game(class MainWindow& wnd);
+	Game(const Game&) = delete;
+	Game& operator=(const Game&) = delete;
 	void Go();
 private:
 	void ComposeFrame();
@@ -40,7 +43,16 @@ private:
 private:
 	MainWindow& wnd;
 	Graphics gfx;
+	std::mt19937 rng;
+	Board brd;
+	Snake snek;
+	Location delta_loc;
+	Point points[5];
+
+
 	/********************************/
 	/*  User Variables              */
+	
+
 	/********************************/
 };
